@@ -334,8 +334,8 @@ export default function DashboardPage() {
               onClick={() => toggleFilter('all')}
               className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('all')
-                  ? 'bg-primary text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-primary text-white dark:bg-primary/90'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               All <span className="ml-1 opacity-70">{stats.totalDevices}</span>
@@ -345,8 +345,8 @@ export default function DashboardPage() {
               onClick={() => toggleFilter('online')}
               className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('online')
-                  ? 'bg-success text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-green-500 text-white dark:bg-green-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               Online <span className="ml-1 opacity-70">{stats.onlineDevices}</span>
@@ -356,21 +356,21 @@ export default function DashboardPage() {
               onClick={() => toggleFilter('offline')}
               className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('offline')
-                  ? 'bg-orange-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-orange-500 text-white dark:bg-orange-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               Offline <span className="ml-1 opacity-70">{stats.totalDevices - stats.onlineDevices}</span>
             </button>
 
-            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <span className="text-slate-300 dark:text-slate-600">|</span>
 
             <button 
               onClick={() => toggleFilter('active')}
               className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('active')
-                  ? 'bg-green-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-green-500 text-white dark:bg-green-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               Active <span className="ml-1 opacity-70">{stats.activeDevices}</span>
@@ -380,21 +380,21 @@ export default function DashboardPage() {
               onClick={() => toggleFilter('pending')}
               className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('pending')
-                  ? 'bg-orange-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-orange-500 text-white dark:bg-orange-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               Pending <span className="ml-1 opacity-70">{stats.pendingDevices}</span>
             </button>
 
-            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <span className="text-slate-300 dark:text-slate-600">|</span>
 
             <button 
               onClick={() => toggleFilter('has_upi')}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('has_upi')
-                  ? 'bg-indigo-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-indigo-500 text-white dark:bg-indigo-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -407,8 +407,8 @@ export default function DashboardPage() {
               onClick={() => toggleFilter('no_upi')}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('no_upi')
-                  ? 'bg-slate-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-slate-500 text-white dark:bg-slate-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -417,14 +417,14 @@ export default function DashboardPage() {
               No UPI <span className="ml-1 opacity-70">{filteredDevices.filter(d => !d.has_upi).length}</span>
             </button>
 
-            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <span className="text-slate-300 dark:text-slate-600">|</span>
 
             <button 
               onClick={() => toggleFilter('high_balance')}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('high_balance')
-                  ? 'bg-emerald-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-emerald-500 text-white dark:bg-emerald-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -438,8 +438,8 @@ export default function DashboardPage() {
               onClick={() => toggleFilter('low_balance')}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('low_balance')
-                  ? 'bg-rose-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-rose-500 text-white dark:bg-rose-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -448,14 +448,14 @@ export default function DashboardPage() {
               Low Balance <span className="ml-1 opacity-70">{filteredDevices.filter(d => d.note === 'low_balance').length}</span>
             </button>
 
-            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <span className="text-slate-300 dark:text-slate-600">|</span>
 
             <button 
               onClick={() => toggleFilter('high_battery')}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('high_battery')
-                  ? 'bg-green-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-green-500 text-white dark:bg-green-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -468,8 +468,8 @@ export default function DashboardPage() {
               onClick={() => toggleFilter('low_battery')}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('low_battery')
-                  ? 'bg-red-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-red-500 text-white dark:bg-red-600'
+                  : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
               }`}
             >
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -479,14 +479,14 @@ export default function DashboardPage() {
               Low Battery <span className="ml-1 opacity-70">{filteredDevices.filter(d => d.battery_level < 20).length}</span>
             </button>
 
-            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <span className="text-slate-300 dark:text-slate-600">|</span>
 
             <button 
               onClick={() => toggleFilter('deleted')}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('deleted')
-                  ? 'bg-red-500 text-white'
-                  : 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30'
+                  ? 'bg-red-500 text-white dark:bg-red-600'
+                  : 'bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40'
               }`}
             >
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -504,8 +504,8 @@ export default function DashboardPage() {
                   key={num}
                   className={`px-2.5 py-1.5 rounded-md text-xs font-medium transition-all ${
                     num === 50
-                      ? 'bg-primary text-white'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                      ? 'bg-primary text-white dark:bg-primary/90'
+                      : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80'
                   }`}
                 >
                   {num}
