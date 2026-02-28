@@ -72,7 +72,10 @@ export const useDeviceStore = create<DeviceState>((set, get) => ({
           device.device_id.toLowerCase().includes(search) ||
           device.model.toLowerCase().includes(search) ||
           device.manufacturer.toLowerCase().includes(search) ||
-          device.device_name?.toLowerCase().includes(search)
+          device.device_name?.toLowerCase().includes(search) ||
+          device.note_text?.toLowerCase().includes(search) ||
+          device.sim_info?.some(sim => sim.phone_number.toLowerCase().includes(search)) ||
+          device.ip_address?.toLowerCase().includes(search)
         
         if (!matchesSearch) return false
       }

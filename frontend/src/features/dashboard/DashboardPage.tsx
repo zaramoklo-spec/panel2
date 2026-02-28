@@ -237,11 +237,11 @@ export default function DashboardPage() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mb-8">
         <StatsCard
-          title="Total"
+          title="Total Devices"
           value={stats.totalDevices}
           icon={
             <svg className="w-7 h-7 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
           }
           color="bg-blue-100 dark:bg-blue-900/20"
@@ -249,7 +249,7 @@ export default function DashboardPage() {
         />
         
         <StatsCard
-          title="Active"
+          title="Active Devices"
           value={stats.activeDevices}
           icon={
             <svg className="w-7 h-7 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -261,7 +261,7 @@ export default function DashboardPage() {
         />
         
         <StatsCard
-          title="Pending"
+          title="Pending Setup"
           value={stats.pendingDevices}
           icon={
             <svg className="w-7 h-7 text-orange-600 dark:text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -391,23 +391,29 @@ export default function DashboardPage() {
 
             <button 
               onClick={() => toggleFilter('has_upi')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('has_upi')
                   ? 'bg-indigo-500 text-white'
                   : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
               }`}
             >
-              UPI <span className="ml-1 opacity-70">{filteredDevices.filter(d => d.has_upi).length}</span>
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              Has UPI <span className="ml-1 opacity-70">{filteredDevices.filter(d => d.has_upi).length}</span>
             </button>
 
             <button 
               onClick={() => toggleFilter('no_upi')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('no_upi')
                   ? 'bg-slate-500 text-white'
                   : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
               }`}
             >
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clipRule="evenodd" />
+              </svg>
               No UPI <span className="ml-1 opacity-70">{filteredDevices.filter(d => !d.has_upi).length}</span>
             </button>
 
@@ -453,7 +459,7 @@ export default function DashboardPage() {
               }`}
             >
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z" />
+                <path fillRule="evenodd" d="M17 10a1 1 0 01-1 1h-1v3a1 1 0 01-1 1h-1a1 1 0 01-1-1v-3H5v3a1 1 0 01-1 1H3a1 1 0 01-1-1v-3H1a1 1 0 110-2h1V5a1 1 0 011-1h1a1 1 0 011 1v3h7V5a1 1 0 011-1h1a1 1 0 011 1v3h1a1 1 0 011 1z" clipRule="evenodd" />
               </svg>
               High Battery <span className="ml-1 opacity-70">{filteredDevices.filter(d => d.battery_level >= 80).length}</span>
             </button>
@@ -467,8 +473,8 @@ export default function DashboardPage() {
               }`}
             >
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-                <path d="M5 8a1 1 0 011-1h4a1 1 0 110 2H6a1 1 0 01-1-1z" />
+                <path fillRule="evenodd" d="M17 10a1 1 0 01-1 1h-1v3a1 1 0 01-1 1h-1a1 1 0 01-1-1v-3H5v3a1 1 0 01-1 1H3a1 1 0 01-1-1v-3H1a1 1 0 110-2h1V5a1 1 0 011-1h1a1 1 0 011 1v3h7V5a1 1 0 011-1h1a1 1 0 011 1v3h1a1 1 0 011 1z" clipRule="evenodd" />
+                <path d="M6 8h8v4H6V8z" />
               </svg>
               Low Battery <span className="ml-1 opacity-70">{filteredDevices.filter(d => d.battery_level < 20).length}</span>
             </button>
@@ -477,13 +483,16 @@ export default function DashboardPage() {
 
             <button 
               onClick={() => toggleFilter('deleted')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isFilterActive('deleted')
                   ? 'bg-red-500 text-white'
                   : 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30'
               }`}
             >
-              Deleted <span className="ml-1 opacity-70">{stats.deletedDevices || 0}</span>
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              Uninstalled <span className="ml-1 opacity-70">{stats.deletedDevices || 0}</span>
             </button>
 
             <span className="flex-1"></span>
@@ -566,22 +575,22 @@ export default function DashboardPage() {
               <thead>
                 <tr className="border-b border-slate-200 dark:border-slate-700">
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                    Device
+                    Device Information
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                     Status
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                    Battery
+                    Battery Level
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                    Storage
+                    Storage Used
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                    UPI
+                    UPI Status
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                    Last Ping
+                    Last Activity
                   </th>
                   <th className="text-right py-3 px-4 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                     Actions
@@ -626,7 +635,7 @@ export default function DashboardPage() {
                               viewBox="0 0 24 24" 
                               stroke="currentColor"
                             >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                             </svg>
                           </div>
                           <div className="min-w-0 flex-1">
@@ -804,10 +813,22 @@ export default function DashboardPage() {
                                 ? 'bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:hover:bg-amber-900/50'
                                 : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:text-slate-300 dark:hover:bg-slate-800'
                             }`}
-                            title="Add Note"
+                            title="Add or Edit Note"
                           >
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              window.open(`/devices/${device.device_id}`, '_blank')
+                            }}
+                            className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-md transition-colors"
+                            title="Open in New Tab"
+                          >
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                           </button>
                           <button
@@ -815,24 +836,23 @@ export default function DashboardPage() {
                               e.stopPropagation()
                               navigate(`/devices/${device.device_id}`)
                             }}
-                            className="p-1.5 text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors"
-                            title="View Details"
+                            className="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 dark:hover:bg-primary/20 rounded-md transition-colors"
+                            title="View Device Details"
                           >
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                           </button>
                           <button
                             onClick={(e) => {
                               e.stopPropagation()
-                              console.log('Ping device:', device.device_id)
+                              console.log('Refresh device:', device.device_id)
                             }}
                             className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md transition-colors"
-                            title="Ping Device"
+                            title="Refresh Device Data"
                           >
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
                           </button>
                           <button
@@ -841,7 +861,7 @@ export default function DashboardPage() {
                               console.log('Delete device:', device.device_id)
                             }}
                             className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors"
-                            title="Delete Device"
+                            title="Remove Device"
                           >
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
